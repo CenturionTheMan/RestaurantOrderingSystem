@@ -57,6 +57,12 @@
         "iomanip": "cpp",
         "optional": "cpp",
         "random": "cpp",
-        "mutex": "cpp"
+        "mutex": "cpp",
+        "condition_variable": "cpp",
+        "chrono": "cpp",
+        "forward_list": "cpp",
+        "map": "cpp",
+        "sstream": "cpp",
+        "xtree": "cpp"
     }
 }

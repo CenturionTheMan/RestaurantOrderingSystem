@@ -1,0 +1,47 @@
+#include "../Headers/Cook.h"
+
+
+Cook::Cook(PancakeType pancakeTypeSpecialization, int pancakesMaxAmount, int minCookingTimeMs, int maxCookingTimeMs)
+{
+    Cook::randomGenerator = RandomGenerator();
+
+    Cook::specializedInPancakeType = pancakeTypeSpecialization;
+    Cook::maxCookingTimeMs = maxCookingTimeMs;
+    Cook::minCookingTimeMs = minCookingTimeMs;
+    Cook::pancakesMaxAmount = pancakesMaxAmount;
+}
+
+Cook::~Cook()
+{
+}
+
+
+void Cook::Run(std::vector<PancakeType>& buffet, std::mutex& mutex, std::condition_variable& conditionVariable)
+{
+    std::thread cookThread([this, &buffet, &mutex, &conditionVariable] {
+
+        while (true)
+        {
+            std::cout << "Cooking pancake: " << PancakeTypeToString(Cook::specializedInPancakeType) << std::endl;
+            int timeToCook = Cook::randomGenerator.GetRandomNumber(minCookingTimeMs, maxCookingTimeMs);
+            std::this_thread::sleep_for(std::chrono::milliseconds(timeToCook));
+
+            std::cout << "Waiting to serve: " << PancakeTypeToString(Cook::specializedInPancakeType) << std::endl;
+            std::unique_lock<std::mutex> uLock(mutex);
+
+            conditionVariable.wait(uLock, [&buffet] { 
+                return buffet.size() < 100;
+            });
+            
+
+            buffet.push_back(Cook::specializedInPancakeType);
+            uLock.unlock();
+
+
+            std::cout << "Served: " << PancakeTypeToString(Cook::specializedInPancakeType) << std::endl;
+        }
+    });
+    
+    if(cookThread.joinable())
+        cookThread.detach();
+}
