@@ -13,8 +13,6 @@ class Cook;
 class Manager
 {
 private:
-    int ingredientsAddAmount = 10;
-
     static std::condition_variable bananaPancakesLimitCondition;
     static std::condition_variable blueberryPancakesLimitCondition;
     static std::condition_variable chocolatePancakesLimitCondition;

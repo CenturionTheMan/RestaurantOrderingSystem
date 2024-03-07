@@ -22,6 +22,8 @@ void Cook::Run(std::condition_variable& conditionVariable)
 
         while (Cook::shouldAbort == false)
         {
+            std::cout << Containers::fridge[PancakeIngredient::Banana] << " " << Containers::fridge[PancakeIngredient::Blueberry] << " " << Containers::fridge[PancakeIngredient::Chocolate] << " " << Containers::fridge[PancakeIngredient::Eggs] << " " << Containers::fridge[PancakeIngredient::Milk] << std::endl;
+
             std::cout << PancakeTypeToString(Cook::specializedInPancakeType) << ": GOING TO FRIDGE" << std::endl;
             std::unique_lock<std::mutex> fridgeLock(Containers::fridgeMutex);
             conditionVariable.wait(fridgeLock, [this] { 
@@ -39,7 +41,7 @@ void Cook::Run(std::condition_variable& conditionVariable)
             
             std::unique_lock<std::mutex> buffetLock(Containers::buffetMutex);
             conditionVariable.wait(buffetLock, [this] { 
-                return Containers::buffet[Cook::specializedInPancakeType] < Containers::GetBuffetPancakesLimit(PancakeType::BananaPancakes);
+                return Containers::buffet[Cook::specializedInPancakeType] < Manager::GetPancakesLimit(PancakeType::BananaPancakes);
             });
             Containers::buffet[Cook::specializedInPancakeType]++;
             buffetLock.unlock();

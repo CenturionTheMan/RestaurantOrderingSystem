@@ -20,20 +20,11 @@ std::map<PancakeIngredient, int> Containers::fridge = {
     {PancakeIngredient::Flour, 30}
 };
  
-std::map<PancakeType, int> Containers::buffetPancakesLimits = {
+ std::map<PancakeType, int> Containers::buffetPancakesLimits = {
     {PancakeType::BananaPancakes, 10},
     {PancakeType::BlueberryPancakes, 20},
     {PancakeType::ChocolatePancakes, 30}
- };
-
-std::map<PancakeIngredient, int> Containers::fridgeIngredientLimits = {
-    {PancakeIngredient::Banana, 30},
-    {PancakeIngredient::Blueberry, 30},
-    {PancakeIngredient::Chocolate, 30},
-    {PancakeIngredient::Eggs, 50},
-    {PancakeIngredient::Milk, 50},
-    {PancakeIngredient::Flour, 50}
-};
+ }
 
 
 
@@ -74,14 +65,19 @@ void Containers::TakeIngredientsFromFridge(PancakeType type)
     Containers::fridge[PancakeIngredient::Flour]--;
 }
 
-int Containers::GetBuffetPancakesLimit(PancakeType pancakeType)
+int Containers::GetPancakesLimit(PancakeType pancakeType)
 {
     return Containers::buffetPancakesLimits[pancakeType];
 }
 
-void Containers::AddIngredientsToFridge(PancakeIngredient type, int amount)
+void Containers::AddIngredientsToFridge(int flourToAdd, int eggsToAdd, int milkToAdd, int bananaToAdd, int blueberryToAdd, int chocolateToAdd)
 {
-    Containers::fridge[type] += amount;
+    Containers::fridge[PancakeIngredient::Flour] += flourToAdd;
+    Containers::fridge[PancakeIngredient::Eggs] += eggsToAdd;
+    Containers::fridge[PancakeIngredient::Milk] += milkToAdd;
+    Containers::fridge[PancakeIngredient::Banana] += bananaToAdd;
+    Containers::fridge[PancakeIngredient::Blueberry] += blueberryToAdd;
+    Containers::fridge[PancakeIngredient::Chocolate] += chocolateToAdd;
 }
 
 
@@ -92,6 +88,6 @@ void Containers::AddPancakeToBuffet(PancakeType type)
 
 bool Containers::CheckIfCanAddToBuffet(PancakeType type)
 {
-    return Containers::buffet[type] <= Containers::GetBuffetPancakesLimit(type);
+    return Containers::buffet[type] <= Containers::GetPancakesLimit(type);
 }
 

@@ -13,26 +13,24 @@ class Cook;
 class Manager
 {
 private:
-    int ingredientsAddAmount = 10;
-
     static std::condition_variable bananaPancakesLimitCondition;
     static std::condition_variable blueberryPancakesLimitCondition;
     static std::condition_variable chocolatePancakesLimitCondition;
     static std::condition_variable fridgeConditionVariable;
 
+    static std::map<PancakeType, int> pancakesLimits;
 
     std::vector<Cook*> bananaCooks;
     std::vector<Cook*> blueberryCooks;
     std::vector<Cook*> chocolateCooks;
 
 public:
-    Manager();
+    Manager(int bananaPancakesLimit, int blueberryPancakesLimit, int chocolatePancakesLimit);
     ~Manager();
 
     void CreateAndRunCook(PancakeType cookSpecialization);
 
-    void RunManager();
-
+    static int GetPancakesLimit(PancakeType pancakeType);
 };
 
 

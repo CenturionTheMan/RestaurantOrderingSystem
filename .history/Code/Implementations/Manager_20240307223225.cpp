@@ -65,12 +65,7 @@ void Manager::RunManager()
         while (true)
         {
             std::unique_lock<std::mutex> fridgeLock(Containers::fridgeMutex);
-
-            if(Containers::fridge[PancakeIngredient::Banana] < Containers::fridgeIngredientLimits[PancakeIngredient::Banana] - ingredientsAddAmount)
-                Containers::AddIngredientsToFridge(PancakeIngredient::Banana, ingredientsAddAmount);
-                
-            //! TO CONTINUE
-
+            
 
 
             fridgeConditionVariable.notify_all();

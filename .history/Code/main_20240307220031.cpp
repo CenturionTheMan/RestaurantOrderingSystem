@@ -14,7 +14,9 @@
 
 int main(int argc, char const *argv[])
 {
-    Manager manager;
+    Manager manager(10, 20, 30);
+
+    std::this_thread::sleep_for(std::chrono::seconds(1));
 
     manager.CreateAndRunCook(PancakeType::BananaPancakes);
     manager.CreateAndRunCook(PancakeType::BananaPancakes);
@@ -24,8 +26,6 @@ int main(int argc, char const *argv[])
     manager.CreateAndRunCook(PancakeType::BananaPancakes);
     manager.CreateAndRunCook(PancakeType::ChocolatePancakes);
     manager.CreateAndRunCook(PancakeType::BlueberryPancakes);
-
-    manager.RunManager();
 
     std::this_thread::sleep_for(std::chrono::seconds(15));
 

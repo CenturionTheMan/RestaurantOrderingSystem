@@ -19,22 +19,6 @@ std::map<PancakeIngredient, int> Containers::fridge = {
     {PancakeIngredient::Milk, 30},
     {PancakeIngredient::Flour, 30}
 };
- 
-std::map<PancakeType, int> Containers::buffetPancakesLimits = {
-    {PancakeType::BananaPancakes, 10},
-    {PancakeType::BlueberryPancakes, 20},
-    {PancakeType::ChocolatePancakes, 30}
- };
-
-std::map<PancakeIngredient, int> Containers::fridgeIngredientLimits = {
-    {PancakeIngredient::Banana, 30},
-    {PancakeIngredient::Blueberry, 30},
-    {PancakeIngredient::Chocolate, 30},
-    {PancakeIngredient::Eggs, 50},
-    {PancakeIngredient::Milk, 50},
-    {PancakeIngredient::Flour, 50}
-};
-
 
 
 bool Containers::CheckIfEnoughIngredients(PancakeType type)
@@ -74,24 +58,12 @@ void Containers::TakeIngredientsFromFridge(PancakeType type)
     Containers::fridge[PancakeIngredient::Flour]--;
 }
 
-int Containers::GetBuffetPancakesLimit(PancakeType pancakeType)
-{
-    return Containers::buffetPancakesLimits[pancakeType];
-}
-
-void Containers::AddIngredientsToFridge(PancakeIngredient type, int amount)
-{
-    Containers::fridge[type] += amount;
-}
-
-
 void Containers::AddPancakeToBuffet(PancakeType type)
 {
     Containers::buffet[type]++;
 }
 
-bool Containers::CheckIfCanAddToBuffet(PancakeType type)
+bool CheckIfCanAddToBuffet(PancakeType type)
 {
-    return Containers::buffet[type] <= Containers::GetBuffetPancakesLimit(type);
+    return Containers::buffet[type] <= Manager::GetPancakesLimit(type);
 }
-

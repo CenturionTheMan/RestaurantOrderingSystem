@@ -13,14 +13,9 @@ namespace Containers
     extern std::map<PancakeType, int> buffet;
     extern std::map<PancakeIngredient, int> fridge;
 
-    extern std::map<PancakeType, int> buffetPancakesLimits;
-    extern std::map<PancakeIngredient, int> fridgeIngredientLimits;
 
     bool CheckIfEnoughIngredients(PancakeType type);
     void TakeIngredientsFromFridge(PancakeType type);
-    void AddIngredientsToFridge(PancakeIngredient type, int amount);
-    int GetBuffetPancakesLimit(PancakeType pancakeType);
-
 
     void AddPancakeToBuffet(PancakeType type);
     bool CheckIfCanAddToBuffet(PancakeType type);

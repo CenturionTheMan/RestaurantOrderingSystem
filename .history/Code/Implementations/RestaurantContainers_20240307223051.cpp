@@ -20,20 +20,11 @@ std::map<PancakeIngredient, int> Containers::fridge = {
     {PancakeIngredient::Flour, 30}
 };
  
-std::map<PancakeType, int> Containers::buffetPancakesLimits = {
+ std::map<PancakeType, int> Containers::buffetPancakesLimits = {
     {PancakeType::BananaPancakes, 10},
     {PancakeType::BlueberryPancakes, 20},
     {PancakeType::ChocolatePancakes, 30}
- };
-
-std::map<PancakeIngredient, int> Containers::fridgeIngredientLimits = {
-    {PancakeIngredient::Banana, 30},
-    {PancakeIngredient::Blueberry, 30},
-    {PancakeIngredient::Chocolate, 30},
-    {PancakeIngredient::Eggs, 50},
-    {PancakeIngredient::Milk, 50},
-    {PancakeIngredient::Flour, 50}
-};
+ }
 
 
 
