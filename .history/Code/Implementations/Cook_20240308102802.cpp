@@ -39,7 +39,7 @@ void Cook::Run(std::condition_variable& conditionVariable)
             
             std::unique_lock<std::mutex> buffetLock(Containers::buffetMutex);
             conditionVariable.wait(buffetLock, [this] { 
-                return Containers::buffet[Cook::specializedInPancakeType] < Containers::GetBuffetPancakesLimit(Cook::specializedInPancakeType);
+                return Containers::buffet[Cook::specializedInPancakeType] < Containers::GetBuffetPancakesLimit(Cook::specializedInPancakeTyp);
             });
             Containers::buffet[Cook::specializedInPancakeType]++;
             buffetLock.unlock();

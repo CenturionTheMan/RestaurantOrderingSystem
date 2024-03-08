@@ -79,8 +79,8 @@ void Manager::RunManager()
                 Containers::AddIngredientsToFridge(PancakeIngredient::Eggs_Milk_Flour, ingredientsAddAmount);
             fridgeLock.unlock();
 
+            
             std::cout << "Manager: CHECKING BUFFET" << std::endl;
-
             std::unique_lock<std::mutex> buffetLock(Containers::buffetMutex);
             if(Containers::buffet[PancakeType::BananaPancakes] < Containers::buffetPancakesLimits[PancakeType::BananaPancakes])
                 Manager::bananaPancakesLimitCondition.notify_all();
@@ -93,7 +93,6 @@ void Manager::RunManager()
             buffetLock.unlock();
 
             std::cout << "Manager: WAITING" << std::endl;
-
             std::this_thread::sleep_for(std::chrono::seconds(2));
         }
     });

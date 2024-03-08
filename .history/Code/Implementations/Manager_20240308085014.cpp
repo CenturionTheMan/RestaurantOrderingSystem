@@ -5,6 +5,7 @@
 std::condition_variable Manager::bananaPancakesLimitCondition;
 std::condition_variable Manager::blueberryPancakesLimitCondition;
 std::condition_variable Manager::chocolatePancakesLimitCondition;
+std::condition_variable Manager::fridgeConditionVariable;
 
 
 Manager::Manager()
@@ -63,8 +64,6 @@ void Manager::RunManager()
     std::thread managerThread([this] {
         while (true)
         {
-            std::cout << "Manager: ADDING INGREDIENTS TO FRIDGE" << std::endl;
-
             std::unique_lock<std::mutex> fridgeLock(Containers::fridgeMutex);
             if(Containers::fridge[PancakeIngredient::Banana] < Containers::fridgeIngredientLimits[PancakeIngredient::Banana] - ingredientsAddAmount)
                 Containers::AddIngredientsToFridge(PancakeIngredient::Banana, ingredientsAddAmount);
@@ -77,9 +76,9 @@ void Manager::RunManager()
 
             if(Containers::fridge[PancakeIngredient::Eggs_Milk_Flour] < Containers::fridgeIngredientLimits[PancakeIngredient::Eggs_Milk_Flour] - ingredientsAddAmount)
                 Containers::AddIngredientsToFridge(PancakeIngredient::Eggs_Milk_Flour, ingredientsAddAmount);
+            Manager::fridgeConditionVariable.notify_all();
             fridgeLock.unlock();
 
-            std::cout << "Manager: CHECKING BUFFET" << std::endl;
 
             std::unique_lock<std::mutex> buffetLock(Containers::buffetMutex);
             if(Containers::buffet[PancakeType::BananaPancakes] < Containers::buffetPancakesLimits[PancakeType::BananaPancakes])
@@ -92,9 +91,7 @@ void Manager::RunManager()
                 Manager::chocolatePancakesLimitCondition.notify_all();
             buffetLock.unlock();
 
-            std::cout << "Manager: WAITING" << std::endl;
-
-            std::this_thread::sleep_for(std::chrono::seconds(2));
+            std::this_thread::sleep_for(std::chrono::seconds(1));
         }
     });
 

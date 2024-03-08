@@ -17,6 +17,11 @@ int main(int argc, char const *argv[])
     Manager manager;
 
     manager.CreateAndRunCook(PancakeType::BananaPancakes);
+    manager.CreateAndRunCook(PancakeType::BananaPancakes);
+    manager.CreateAndRunCook(PancakeType::BananaPancakes);
+    manager.CreateAndRunCook(PancakeType::BananaPancakes);
+    manager.CreateAndRunCook(PancakeType::BananaPancakes);
+    manager.CreateAndRunCook(PancakeType::BananaPancakes);
     manager.CreateAndRunCook(PancakeType::ChocolatePancakes);
     manager.CreateAndRunCook(PancakeType::BlueberryPancakes);
 

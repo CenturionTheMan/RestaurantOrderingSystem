@@ -77,23 +77,23 @@ void Manager::RunManager()
 
             if(Containers::fridge[PancakeIngredient::Eggs_Milk_Flour] < Containers::fridgeIngredientLimits[PancakeIngredient::Eggs_Milk_Flour] - ingredientsAddAmount)
                 Containers::AddIngredientsToFridge(PancakeIngredient::Eggs_Milk_Flour, ingredientsAddAmount);
+
             fridgeLock.unlock();
 
-            std::cout << "Manager: CHECKING BUFFET" << std::endl;
-
-            std::unique_lock<std::mutex> buffetLock(Containers::buffetMutex);
-            if(Containers::buffet[PancakeType::BananaPancakes] < Containers::buffetPancakesLimits[PancakeType::BananaPancakes])
-                Manager::bananaPancakesLimitCondition.notify_all();
-                
-            if(Containers::buffet[PancakeType::BlueberryPancakes] < Containers::buffetPancakesLimits[PancakeType::BlueberryPancakes])
-                Manager::blueberryPancakesLimitCondition.notify_all();
             
-            if(Containers::buffet[PancakeType::ChocolatePancakes] < Containers::buffetPancakesLimits[PancakeType::ChocolatePancakes])
-                Manager::chocolatePancakesLimitCondition.notify_all();
-            buffetLock.unlock();
+            // std::cout << "Manager: CHECKING BUFFET" << std::endl;
+            // std::unique_lock<std::mutex> buffetLock(Containers::buffetMutex);
+            // if(Containers::buffet[PancakeType::BananaPancakes] < Containers::buffetPancakesLimits[PancakeType::BananaPancakes])
+            //     Manager::bananaPancakesLimitCondition.notify_all();
+                
+            // if(Containers::buffet[PancakeType::BlueberryPancakes] < Containers::buffetPancakesLimits[PancakeType::BlueberryPancakes])
+            //     Manager::blueberryPancakesLimitCondition.notify_all();
+            
+            // if(Containers::buffet[PancakeType::ChocolatePancakes] < Containers::buffetPancakesLimits[PancakeType::ChocolatePancakes])
+            //     Manager::chocolatePancakesLimitCondition.notify_all();
+            // buffetLock.unlock();
 
             std::cout << "Manager: WAITING" << std::endl;
-
             std::this_thread::sleep_for(std::chrono::seconds(2));
         }
     });
