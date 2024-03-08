@@ -6,9 +6,10 @@
 #include <iomanip>
 #include <sstream>
 #include <stdlib.h> 
+#include "magicenum.h"
 
 #include "EntityController.h"
-#include "RestaurantContainers.h"
+
 
 namespace Gui
 {

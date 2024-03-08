@@ -36,8 +36,8 @@ void Manager::Run()
             if(Containers::fridge[PancakeIngredient::Blueberry] < Containers::fridgeIngredientLimits[PancakeIngredient::Blueberry] - ingredientsAddAmount)
                 Containers::AddIngredientsToFridge(PancakeIngredient::Blueberry, ingredientsAddAmount);
 
-            if(Containers::fridge[PancakeIngredient::Eggs_Milk_Flour] < Containers::fridgeIngredientLimits[PancakeIngredient::Eggs_Milk_Flour] - ingredientsAddAmount*3)
-                Containers::AddIngredientsToFridge(PancakeIngredient::Eggs_Milk_Flour, ingredientsAddAmount*3);
+            if(Containers::fridge[PancakeIngredient::Eggs_Milk_Flour] < Containers::fridgeIngredientLimits[PancakeIngredient::Eggs_Milk_Flour] - ingredientsAddAmount)
+                Containers::AddIngredientsToFridge(PancakeIngredient::Eggs_Milk_Flour, ingredientsAddAmount);
             fridgeLock.unlock();
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 

@@ -23,7 +23,7 @@ void Client::Run()
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
             PancakeType pancakeType = static_cast<PancakeType>(randomGenerator.GetRandomNumber(0, 2));
-            std::unique_lock<std::mutex> lock(Containers::buffetMutex);
+            std::lock_guard<std::mutex> lock(Containers::buffetMutex);
             if(Containers::buffet[pancakeType] > 0)
             {
                 this->state = ClientState::Eating;
@@ -33,7 +33,6 @@ void Client::Run()
             {
                 this->state = ClientState::NoFoodToEat;
             }
-            lock.unlock();
             std::this_thread::sleep_for(std::chrono::milliseconds(randomGenerator.GetRandomNumber(minOrderTimeMs, maxOrderTimeMs)));
         }
     });

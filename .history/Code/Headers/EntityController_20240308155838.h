@@ -26,7 +26,6 @@ public:
 
     int GetAmountOfCooks() { return cooks.size(); }
     int GetAmountOfCooksInGivenState(CookState state);
-    
     ManagerState GetManagerState() { return manager->GetState(); }
 };
 

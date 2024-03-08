@@ -6,7 +6,7 @@
 #include "PancakesTypes.h"
 #include "RestaurantContainers.h"
 #include "RandomGenerator.h"
-#include "EntityEnums.h"
+
 
 
 /// @brief Class that represents a client that orders pancakes
