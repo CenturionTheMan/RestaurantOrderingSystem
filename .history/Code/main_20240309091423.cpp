@@ -6,7 +6,7 @@
 #include "Headers/RestaurantContainers.h"
 #include "Headers/EntityController.h"
 #include "Headers/Gui.h"
-#include <algorithm>
+
 
 
 int main(int argc, char const *argv[])
@@ -34,45 +34,6 @@ int main(int argc, char const *argv[])
 
     Gui::RunGui(entityController, 1);
     
-    while (Gui::UserInput != "exit")
-    {
-        std::string input;
-        std::getline(std::cin, input);
-        
-        input.erase(std::remove(input.begin(), input.end(), '\n'), input.end());
-        input.erase(std::remove(input.begin(), input.end(), '\t'), input.end());
-        input.erase(std::remove(input.begin(), input.end(), '\r'), input.end());
-        input.erase(std::remove(input.begin(), input.end(), ' '), input.end());
-
-        Gui::UserInput = input;
-
-
-        if(input == "addcookbanana")
-        {
-            entityController.AddCook(PancakeType::BananaPancakes, 1000, 2000);
-        }
-        else if(input == "addcookchocolate")
-        {
-            entityController.AddCook(PancakeType::ChocolatePancakes, 1000, 2000);
-        }
-        else if(input == "addcookblueberry")
-        {
-            entityController.AddCook(PancakeType::BlueberryPancakes, 1000, 2000);
-        }
-        else if(input == "addclient")
-        {
-            entityController.AddClient(1000, 2000);
-        }
-        else if (input == "deleteclient")
-        {
-            entityController.DeleteClient(); //!! will crash
-        }
-        else if (input == "deletecook")
-        {
-            //entityController.DeleteCook();
-        }
-        
-    }
 
     return 0;
 }

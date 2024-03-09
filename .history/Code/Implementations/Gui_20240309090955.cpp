@@ -46,25 +46,31 @@ void Gui::ClearScreen()
     std::cout << "\033c"; //! for vscode specific
 }
 
-void Gui::PrintUserInput()
+std::string Gui::HandleUserInput(EntityController& entityController)
 {
-    std::cout << "User input: " << Gui::UserInput << std::endl;
+    std::string input;
+    std::cout << "Current command: " << Gui::UserInput << std::endl;
+    std::cin >> input;
+
+
+
+    return input;
 }
 
 
 void Gui::RunGui(EntityController& entityController, int refreshRateInMs)
 {
     std::thread guiThread([&entityController, refreshRateInMs](){
+        std::string lastInput = "";
         while (true)
         {
             Gui::ClearScreen();
             Gui::PrintRestaurant(entityController);
-            Gui::PrintUserInput();
+            lastInput = HandleUserInput(entityController);
             std::this_thread::sleep_for(std::chrono::milliseconds(refreshRateInMs));
         }
     });
 
-
     if(guiThread.joinable())
-        guiThread.detach();
+            guiThread.detach();
 }

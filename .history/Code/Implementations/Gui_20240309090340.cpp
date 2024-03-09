@@ -1,9 +1,7 @@
 #include "../Headers/Gui.h"
 
 
-std::string Gui::UserInput = "";
-
-void Gui::PrintRestaurant(EntityController& entityController)
+void Gui::PrintRestaurant()
 {
     std::stringstream stream;
 
@@ -46,9 +44,9 @@ void Gui::ClearScreen()
     std::cout << "\033c"; //! for vscode specific
 }
 
-void Gui::PrintUserInput()
+void Gui::HandleUserInput(EntityController& entityController)
 {
-    std::cout << "User input: " << Gui::UserInput << std::endl;
+
 }
 
 
@@ -58,13 +56,12 @@ void Gui::RunGui(EntityController& entityController, int refreshRateInMs)
         while (true)
         {
             Gui::ClearScreen();
-            Gui::PrintRestaurant(entityController);
-            Gui::PrintUserInput();
+            Gui::PrintRestaurant();
+            HandleUserInput(entityController);
             std::this_thread::sleep_for(std::chrono::milliseconds(refreshRateInMs));
         }
     });
 
-
     if(guiThread.joinable())
-        guiThread.detach();
+            guiThread.detach();
 }

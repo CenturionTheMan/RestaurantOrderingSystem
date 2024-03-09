@@ -39,35 +39,35 @@ int main(int argc, char const *argv[])
         std::string input;
         std::getline(std::cin, input);
         
-        input.erase(std::remove(input.begin(), input.end(), '\n'), input.end());
-        input.erase(std::remove(input.begin(), input.end(), '\t'), input.end());
-        input.erase(std::remove(input.begin(), input.end(), '\r'), input.end());
-        input.erase(std::remove(input.begin(), input.end(), ' '), input.end());
+        sstr.erase(std::remove(str.begin(), str.end(), '\n'), str.end());
+        sstr.erase(std::remove(str.begin(), str.end(), '\t'), str.end());
+        sstr.erase(std::remove(str.begin(), str.end(), '\r'), str.end());
+        sstr.erase(std::remove(str.begin(), str.end(), ' '), str.end());
 
         Gui::UserInput = input;
 
 
-        if(input == "addcookbanana")
+        if(Gui::UserInput == "add cook banana")
         {
             entityController.AddCook(PancakeType::BananaPancakes, 1000, 2000);
         }
-        else if(input == "addcookchocolate")
+        else if(Gui::UserInput == "add cook chocolate")
         {
             entityController.AddCook(PancakeType::ChocolatePancakes, 1000, 2000);
         }
-        else if(input == "addcookblueberry")
+        else if(Gui::UserInput == "add cook blueberry")
         {
             entityController.AddCook(PancakeType::BlueberryPancakes, 1000, 2000);
         }
-        else if(input == "addclient")
+        else if(Gui::UserInput == "add client")
         {
             entityController.AddClient(1000, 2000);
         }
-        else if (input == "deleteclient")
+        else if (Gui::UserInput == "delete client")
         {
-            entityController.DeleteClient(); //!! will crash
+            entityController.DeleteClient();
         }
-        else if (input == "deletecook")
+        else if (Gui::UserInput == "delete cook")
         {
             //entityController.DeleteCook();
         }

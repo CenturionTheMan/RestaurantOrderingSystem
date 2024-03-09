@@ -47,27 +47,27 @@ int main(int argc, char const *argv[])
         Gui::UserInput = input;
 
 
-        if(input == "addcookbanana")
+        if(Gui::UserInput == "addcookbanana")
         {
             entityController.AddCook(PancakeType::BananaPancakes, 1000, 2000);
         }
-        else if(input == "addcookchocolate")
+        else if(Gui::UserInput == "addcookchocolate")
         {
             entityController.AddCook(PancakeType::ChocolatePancakes, 1000, 2000);
         }
-        else if(input == "addcookblueberry")
+        else if(Gui::UserInput == "addcookblueberry")
         {
             entityController.AddCook(PancakeType::BlueberryPancakes, 1000, 2000);
         }
-        else if(input == "addclient")
+        else if(Gui::UserInput == "addclient")
         {
             entityController.AddClient(1000, 2000);
         }
-        else if (input == "deleteclient")
+        else if (Gui::UserInput == "deleteclient")
         {
-            entityController.DeleteClient(); //!! will crash
+            entityController.DeleteClient();
         }
-        else if (input == "deletecook")
+        else if (Gui::UserInput == "deletecook")
         {
             //entityController.DeleteCook();
         }

@@ -14,11 +14,7 @@ namespace Gui
 {
     const std::string BREAK_LINE = "-------------------------------------------------------\n";
 
-    extern std::string UserInput;
-
-    void PrintRestaurant(EntityController& entityController);
-    void ClearScreen();
-    void PrintUserInput();
+    void PrintRestaurant()
 
     void RunGui(EntityController& entityController, int refreshRateInMs);
 

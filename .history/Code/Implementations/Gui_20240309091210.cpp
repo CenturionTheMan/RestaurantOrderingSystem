@@ -64,7 +64,17 @@ void Gui::RunGui(EntityController& entityController, int refreshRateInMs)
         }
     });
 
+    std::thread userInputThread([](){
+        while (true)
+        {
+            std::string input;
+            std::getline(std::cin, input);
+            Gui::UserInput = input;
+        }
+    });
 
     if(guiThread.joinable())
         guiThread.detach();
+    if(userInputThread.joinable())
+        userInputThread.detach();
 }

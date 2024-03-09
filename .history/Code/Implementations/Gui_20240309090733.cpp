@@ -1,8 +1,6 @@
 #include "../Headers/Gui.h"
 
 
-std::string Gui::UserInput = "";
-
 void Gui::PrintRestaurant(EntityController& entityController)
 {
     std::stringstream stream;
@@ -46,25 +44,36 @@ void Gui::ClearScreen()
     std::cout << "\033c"; //! for vscode specific
 }
 
-void Gui::PrintUserInput()
+std::string Gui::HandleUserInput(EntityController& entityController, std::string lastInput)
 {
-    std::cout << "User input: " << Gui::UserInput << std::endl;
+    std::string input;
+    std::cout << "Current command: " << lastInput << std::endl;
+    std::cin >> input;
+
+    if (input == "exit")
+    {
+        entityController.Stop();
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        exit(0);
+    }
+
+    return input;
 }
 
 
 void Gui::RunGui(EntityController& entityController, int refreshRateInMs)
 {
     std::thread guiThread([&entityController, refreshRateInMs](){
+        std::string lastInput = "";
         while (true)
         {
             Gui::ClearScreen();
             Gui::PrintRestaurant(entityController);
-            Gui::PrintUserInput();
+            lastInput = HandleUserInput(entityController, lastInput);
             std::this_thread::sleep_for(std::chrono::milliseconds(refreshRateInMs));
         }
     });
 
-
     if(guiThread.joinable())
-        guiThread.detach();
+            guiThread.detach();
 }

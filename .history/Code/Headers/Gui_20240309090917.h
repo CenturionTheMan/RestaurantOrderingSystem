@@ -18,7 +18,7 @@ namespace Gui
 
     void PrintRestaurant(EntityController& entityController);
     void ClearScreen();
-    void PrintUserInput();
+    HandleUserInput(EntityController& entityController);
 
     void RunGui(EntityController& entityController, int refreshRateInMs);
 

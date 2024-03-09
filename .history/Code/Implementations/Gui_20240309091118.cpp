@@ -64,7 +64,6 @@ void Gui::RunGui(EntityController& entityController, int refreshRateInMs)
         }
     });
 
-
     if(guiThread.joinable())
-        guiThread.detach();
+            guiThread.detach();
 }

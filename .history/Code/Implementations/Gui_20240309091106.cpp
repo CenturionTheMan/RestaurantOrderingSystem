@@ -59,12 +59,11 @@ void Gui::RunGui(EntityController& entityController, int refreshRateInMs)
         {
             Gui::ClearScreen();
             Gui::PrintRestaurant(entityController);
-            Gui::PrintUserInput();
+            Gui::PrintUserInput(entityController);
             std::this_thread::sleep_for(std::chrono::milliseconds(refreshRateInMs));
         }
     });
 
-
     if(guiThread.joinable())
-        guiThread.detach();
+            guiThread.detach();
 }

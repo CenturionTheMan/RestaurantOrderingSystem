@@ -65,7 +65,7 @@ int main(int argc, char const *argv[])
         }
         else if (input == "deleteclient")
         {
-            entityController.DeleteClient(); //!! will crash
+            entityController.DeleteClient();
         }
         else if (input == "deletecook")
         {
