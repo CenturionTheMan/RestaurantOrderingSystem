@@ -84,6 +84,7 @@ void Cook::Run()
             
             this->state = CookState::CookIdle;
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+            if(this->isStopRequested) break;
         }
     });
     

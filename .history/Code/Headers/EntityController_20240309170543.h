@@ -65,8 +65,6 @@ public:
     /// @return the amount
     int GetAmountOfCooksInGivenState(CookState state);
     
-    /// @brief Get the current manager state
-    /// @return state
     ManagerState GetManagerState() { return manager->GetState(); }
 };
 

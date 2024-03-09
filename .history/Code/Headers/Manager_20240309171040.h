@@ -12,7 +12,7 @@
 
 
 
-/// @brief Class that represents manager that checks the buffet and adds ingredients to the fridge
+
 class Manager
 {
 private:

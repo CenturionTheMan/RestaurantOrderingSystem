@@ -12,7 +12,7 @@
 
 
 
-/// @brief Class that represents manager that checks the buffet and adds ingredients to the fridge
+
 class Manager
 {
 private:
@@ -20,7 +20,6 @@ private:
     /// @brief amount of ingredients that will be added to the fridge
     int ingredientsAddAmount;
 
-    /// @brief current manager state
     ManagerState state;
 
 public:
@@ -41,8 +40,7 @@ public:
     /// @brief method that starts the manager thread
     void Run();
 
-    /// @brief returns the state of the manager
-    /// @return state
+    /// @brief method that stops the manager thread
     ManagerState GetState() { return state; }
 
 };

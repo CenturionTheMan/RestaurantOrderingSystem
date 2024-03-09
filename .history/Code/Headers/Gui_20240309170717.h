@@ -31,23 +31,11 @@ namespace Gui
     const std::string COMMAND_EXIT = "exit";
     // COMMANDS
 
-    /// @brief Function that prints the restaurant state (in the console)
-    /// @param entityController entity controller object
     void PrintRestaurant(EntityController& entityController);
-
-    /// @brief Function will clear the screen
     void ClearScreen();
-
-    /// @brief Function that prints the user input and commands list
     void PrintUserInput();
 
-    /// @brief Function runs new thread which constantly prints the restaurant state
-    /// @param entityController entity controller object
-    /// @param refreshRateInMs time in milliseconds that the thread will wait before printing the restaurant state again
     void RunGuiOutput(EntityController& entityController, int refreshRateInMs);
-
-    /// @brief Function reads the user input. Runs on current thread
-    /// @param entityController entity controller object
     void RunGuiInput(EntityController& entityController);
 } // namespace Gui
 

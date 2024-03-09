@@ -44,29 +44,15 @@ public:
     void DeleteClient();
 
     /// @brief Method that stops and deletes cook
-    /// @param cookToDeleteSpecialization type of pancake that the cook specializes in (makes) 
+    /// @param cookToDeleteSpecialization 
     void DeleteCook(PancakeType cookToDeleteSpecialization);
 
-    /// @brief Get the Amount Of all Client objects
-    /// @return the amount
     int GetAmountOfClients() { return clients.size(); }
-
-    /// @brief Get amount of clients in given state
-    /// @param state state to filter by
-    /// @return the amount
     int GetAmountOfClientsInGivenState(ClientState state);
 
-    /// @brief Get amount of all Cook objects
-    /// @return the amount
     int GetAmountOfCooks() { return cooks.size(); }
-
-    /// @brief Get amount of cooks in given state
-    /// @param state state to filter by
-    /// @return the amount
     int GetAmountOfCooksInGivenState(CookState state);
     
-    /// @brief Get the current manager state
-    /// @return state
     ManagerState GetManagerState() { return manager->GetState(); }
 };
 

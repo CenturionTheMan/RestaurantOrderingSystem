@@ -3,6 +3,17 @@
 
 std::string Gui::UserInput = "";
 
+std::string Gui::CommandAddCookBanana = "addcookbanana";
+std::string Gui::CommandAddCookChocolate = "addcookchocolate";
+std::string Gui::CommandAddCookBlueberry = "addcookblueberry";
+std::string Gui::CommandAddClient = "addclient";
+std::string Gui::CommandDeleteClient = "deleteclient";
+std::string Gui::CommandDeleteCookBanana = "deletecookbanana";
+std::string Gui::CommandDeleteCookChocolate = "deletecookchocolate";
+std::string Gui::CommandDeleteCookBlueberry = "deletecookblueberry";
+std::string Gui::CommandExit = "exit";
+
+
 
 void Gui::PrintRestaurant(EntityController& entityController)
 {
@@ -51,11 +62,7 @@ void Gui::ClearScreen()
 
 void Gui::PrintUserInput()
 {
-    std::cout << "| Commands: " << std::endl << "| " << Gui::COMMAND_EXIT << " | " << Gui::COMMAND_ADD_CLIENT << " | " << Gui::COMMAND_ADD_COOK_BANANA << " | " 
-    << Gui::COMMAND_ADD_COOK_CHOCOLATE << " | " 
-    << Gui::COMMAND_ADD_COOK_BLUEBERRY << " | " << Gui::COMMAND_DELETE_CLIENT << " | " << Gui::COMMAND_DELETE_COOK_BANANA << " | " 
-    << Gui::COMMAND_DELETE_COOK_CHOCOLATE << " | " << Gui::COMMAND_DELETE_COOK_BLUEBERRY << " | " << std::endl << BREAK_LINE;
-    std::cout << "| Last user input: " << Gui::UserInput << std::endl;
+    std::cout << "Last user input: " << Gui::UserInput << std::endl;
 }
 
 
@@ -90,35 +97,35 @@ void Gui::RunGuiInput(EntityController& entityController)
         input.erase(std::remove(input.begin(), input.end(), ' '), input.end());
 
 
-        if(input == COMMAND_ADD_CLIENT)
-        {
-            entityController.AddClient(1000, 2000);
-        }
-        else if(input == COMMAND_ADD_COOK_BANANA)
+        if(input == "addcookbanana")
         {
             entityController.AddCook(PancakeType::BananaPancakes, 1000, 2000);
         }
-        else if(input == COMMAND_ADD_COOK_CHOCOLATE)
+        else if(input == "addcookchocolate")
         {
             entityController.AddCook(PancakeType::ChocolatePancakes, 1000, 2000);
         }
-        else if(input == COMMAND_ADD_COOK_BLUEBERRY)
+        else if(input == "addcookblueberry")
         {
             entityController.AddCook(PancakeType::BlueberryPancakes, 1000, 2000);
         }
-        else if(input == COMMAND_DELETE_CLIENT)
+        else if(input == "addclient")
         {
-            entityController.DeleteClient();
+            entityController.AddClient(1000, 2000);
         }
-        else if(input == COMMAND_DELETE_COOK_BANANA)
+        else if (input == "deleteclient")
+        {
+            entityController.DeleteClient(); //!! will crash
+        }
+        else if (input == "deletecookbanana")
         {
             entityController.DeleteCook(PancakeType::BananaPancakes);
         }
-        else if(input == COMMAND_DELETE_COOK_CHOCOLATE)
+        else if (input == "deletecookchocolate")
         {
             entityController.DeleteCook(PancakeType::ChocolatePancakes);
         }
-        else if(input == COMMAND_DELETE_COOK_BLUEBERRY)
+        else if (input == "deletecookblueberry")
         {
             entityController.DeleteCook(PancakeType::BlueberryPancakes);
         }

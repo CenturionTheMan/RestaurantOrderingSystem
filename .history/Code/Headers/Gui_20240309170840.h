@@ -41,13 +41,10 @@ namespace Gui
     /// @brief Function that prints the user input and commands list
     void PrintUserInput();
 
-    /// @brief Function runs new thread which constantly prints the restaurant state
-    /// @param entityController entity controller object
-    /// @param refreshRateInMs time in milliseconds that the thread will wait before printing the restaurant state again
+    /// @brief Function prints simulation state and runs it in new thread
+    /// @param entityController 
+    /// @param refreshRateInMs 
     void RunGuiOutput(EntityController& entityController, int refreshRateInMs);
-
-    /// @brief Function reads the user input. Runs on current thread
-    /// @param entityController entity controller object
     void RunGuiInput(EntityController& entityController);
 } // namespace Gui
 

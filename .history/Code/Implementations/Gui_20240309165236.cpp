@@ -51,7 +51,7 @@ void Gui::ClearScreen()
 
 void Gui::PrintUserInput()
 {
-    std::cout << "| Commands: " << std::endl << "| " << Gui::COMMAND_EXIT << " | " << Gui::COMMAND_ADD_CLIENT << " | " << Gui::COMMAND_ADD_COOK_BANANA << " | " 
+    std::cout << "| Commands: " << std::endl << Gui::COMMAND_EXIT << " | " << Gui::COMMAND_ADD_CLIENT << " | " << Gui::COMMAND_ADD_COOK_BANANA << " | " 
     << Gui::COMMAND_ADD_COOK_CHOCOLATE << " | " 
     << Gui::COMMAND_ADD_COOK_BLUEBERRY << " | " << Gui::COMMAND_DELETE_CLIENT << " | " << Gui::COMMAND_DELETE_COOK_BANANA << " | " 
     << Gui::COMMAND_DELETE_COOK_CHOCOLATE << " | " << Gui::COMMAND_DELETE_COOK_BLUEBERRY << " | " << std::endl << BREAK_LINE;

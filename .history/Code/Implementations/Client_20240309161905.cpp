@@ -25,11 +25,7 @@ void Client::Run()
 
             PancakeType pancakeType = static_cast<PancakeType>(randomGenerator.GetRandomNumber(0, 2));
             std::unique_lock<std::mutex> lock(Containers::buffetMutex);
-            if(this->isStopRequested)
-            {
-                lock.unlock();
-                break;
-            }
+            if(this->isStopRequested) break;
 
             if(Containers::buffet[pancakeType] > 0)
             {

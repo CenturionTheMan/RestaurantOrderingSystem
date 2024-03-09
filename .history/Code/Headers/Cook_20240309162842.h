@@ -33,7 +33,6 @@ private:
     /// @brief minimum and maximum cooking time in milliseconds
     int maxCookingTimeMs, minCookingTimeMs;
 
-    /// @brief flag that indicates if thread should stop
     bool isStopRequested = false;
 
 public:
@@ -51,8 +50,6 @@ public:
 
     /// @brief method that starts the cook thread
     void Run();
-
-    /// @brief method that stops the cook thread
     void Stop() { isStopRequested = true; }
 
     CookState GetState() { return state; }

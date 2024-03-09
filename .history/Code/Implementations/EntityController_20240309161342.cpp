@@ -43,28 +43,11 @@ void EntityController::DeleteClient()
     if(clients.size() > 0)
     {
         Client* client = clients.back();
-        client->Stop();
         clients.pop_back();
+        client->Stop();
         delete client;
     }
 }
-
-void EntityController::DeleteCook(PancakeType cookToDeleteSpecialization)
-{
-    for (int i = 0; i < cooks.size(); i++)
-    {
-        if(cooks[i]->GetSpecialization() == cookToDeleteSpecialization)
-        {
-            Cook* cook = cooks[i];
-            cook->Stop();
-            cooks.erase(cooks.begin() + i);
-            delete cook;
-            break;
-        }
-    }
-
-}
-
 
 int EntityController::GetAmountOfClientsInGivenState(ClientState state)
 {

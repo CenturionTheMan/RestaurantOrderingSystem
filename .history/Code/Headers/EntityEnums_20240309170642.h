@@ -34,10 +34,12 @@ enum CookState
 /// @return string
 std::string EntityStateToString(ClientState state);
 
+
 /// @brief Converts the given state to string
 /// @param state state to convert
 /// @return string
 std::string EntityStateToString(ManagerState state);
+
 
 /// @brief Converts the given state to string
 /// @param state state to convert

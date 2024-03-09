@@ -44,6 +44,7 @@ void Cook::Run()
             if(this->isStopRequested) break;
 
             std::unique_lock<std::mutex> fridgeLock(Containers::fridgeMutex);
+            // if fridge does not have enough ingredients -> wait
             Cook::conditionVariable->wait(fridgeLock, [this] { 
                 bool enoughIngredients = Containers::CheckIfEnoughIngredients(Cook::specializedInPancakeType);
                 if(this->isStopRequested) return true;

@@ -1,8 +1,12 @@
+#include <iostream>
+#include <vector>
+#include <mutex>
+#include <condition_variable>
 #include "Headers/PancakesTypes.h"
 #include "Headers/RestaurantContainers.h"
 #include "Headers/EntityController.h"
 #include "Headers/Gui.h"
-
+#include <algorithm>
 
 
 int main(int argc, char const *argv[])

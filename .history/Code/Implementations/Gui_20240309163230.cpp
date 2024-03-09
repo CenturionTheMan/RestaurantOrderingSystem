@@ -3,7 +3,6 @@
 
 std::string Gui::UserInput = "";
 
-
 void Gui::PrintRestaurant(EntityController& entityController)
 {
     std::stringstream stream;
@@ -17,7 +16,7 @@ void Gui::PrintRestaurant(EntityController& entityController)
     "|  - Eggs_Milk_Flour:  " << std::setw(4) << std::right << Containers::fridge[PancakeIngredient::Eggs_Milk_Flour] << std::endl << Gui::BREAK_LINE;
 
     stream << "| Buffet: \n" <<
-    "|  - BananaPancakes:    " << std::setw(4) << std::right << Containers::buffet[PancakeType::BananaPancakes] << std::endl <<
+    "|  - BananaPancakes:   " << std::setw(4) << std::right << Containers::buffet[PancakeType::BananaPancakes] << std::endl <<
     "|  - BlueberryPancakes: " << std::setw(4) << std::right << Containers::buffet[PancakeType::BlueberryPancakes] << std::endl <<
     "|  - ChocolatePancakes: " << std::setw(4) << std::right << Containers::buffet[PancakeType::ChocolatePancakes] << std::endl << Gui::BREAK_LINE;
 
@@ -51,11 +50,7 @@ void Gui::ClearScreen()
 
 void Gui::PrintUserInput()
 {
-    std::cout << "| Commands: " << std::endl << "| " << Gui::COMMAND_EXIT << " | " << Gui::COMMAND_ADD_CLIENT << " | " << Gui::COMMAND_ADD_COOK_BANANA << " | " 
-    << Gui::COMMAND_ADD_COOK_CHOCOLATE << " | " 
-    << Gui::COMMAND_ADD_COOK_BLUEBERRY << " | " << Gui::COMMAND_DELETE_CLIENT << " | " << Gui::COMMAND_DELETE_COOK_BANANA << " | " 
-    << Gui::COMMAND_DELETE_COOK_CHOCOLATE << " | " << Gui::COMMAND_DELETE_COOK_BLUEBERRY << " | " << std::endl << BREAK_LINE;
-    std::cout << "| Last user input: " << Gui::UserInput << std::endl;
+    std::cout << "Last user input: " << Gui::UserInput << std::endl;
 }
 
 
@@ -79,48 +74,5 @@ void Gui::RunGuiOutput(EntityController& entityController, int refreshRateInMs)
 
 void Gui::RunGuiInput(EntityController& entityController)
 {
-    while (Gui::UserInput != "exit")
-    {
-        std::string input;
-        std::getline(std::cin, input);
-        
-        Gui::UserInput = input;
-
-        input.erase(std::remove(input.begin(), input.end(), '\n'), input.end());
-        input.erase(std::remove(input.begin(), input.end(), ' '), input.end());
-
-
-        if(input == COMMAND_ADD_CLIENT)
-        {
-            entityController.AddClient(1000, 2000);
-        }
-        else if(input == COMMAND_ADD_COOK_BANANA)
-        {
-            entityController.AddCook(PancakeType::BananaPancakes, 1000, 2000);
-        }
-        else if(input == COMMAND_ADD_COOK_CHOCOLATE)
-        {
-            entityController.AddCook(PancakeType::ChocolatePancakes, 1000, 2000);
-        }
-        else if(input == COMMAND_ADD_COOK_BLUEBERRY)
-        {
-            entityController.AddCook(PancakeType::BlueberryPancakes, 1000, 2000);
-        }
-        else if(input == COMMAND_DELETE_CLIENT)
-        {
-            entityController.DeleteClient();
-        }
-        else if(input == COMMAND_DELETE_COOK_BANANA)
-        {
-            entityController.DeleteCook(PancakeType::BananaPancakes);
-        }
-        else if(input == COMMAND_DELETE_COOK_CHOCOLATE)
-        {
-            entityController.DeleteCook(PancakeType::ChocolatePancakes);
-        }
-        else if(input == COMMAND_DELETE_COOK_BLUEBERRY)
-        {
-            entityController.DeleteCook(PancakeType::BlueberryPancakes);
-        }
-    }
+    
 }
