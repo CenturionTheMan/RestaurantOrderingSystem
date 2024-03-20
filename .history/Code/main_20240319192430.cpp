@@ -2,7 +2,6 @@
 #include "Headers/RestaurantContainers.h"
 #include "Headers/EntityController.h"
 #include "Headers/Gui.h"
-// #include <curses.h>
 
 
 int main(int argc, char const *argv[])

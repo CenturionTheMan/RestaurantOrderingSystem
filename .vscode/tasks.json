@@ -12,6 +12,8 @@
                 "${workspaceFolder}/Code/Implementations/*.cpp",
                 "-o",
                 "${workspaceFolder}/Code/main.exe",
+                "-I",
+                "C:\\MinGW\\include",
                 // "-I",
                 // "${workspaceFolder}/Code/Headers/*.h"
             ],

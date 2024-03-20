@@ -1,0 +1,4 @@
+namespace GuiNcurses
+{
+    
+} // namespace GuiNcurses
