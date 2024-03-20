@@ -4,7 +4,6 @@
 #include "Headers/Gui.h"
 #include "Headers/GuiNcurses.h"
 
-
 int main(int argc, char const *argv[])
 {
     // EntityController entityController;
@@ -20,6 +19,8 @@ int main(int argc, char const *argv[])
     // Gui::RunGuiOutput(entityController, 68); //around 15 frames per second
     
     // Gui::RunGuiInput(entityController);
-    GuiNcurses gui;
+
+
+
     return 0;
 }

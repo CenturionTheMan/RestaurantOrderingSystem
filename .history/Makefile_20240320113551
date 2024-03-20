@@ -1,0 +1,4 @@
+all: compile
+
+compile: Code/main.cpp
+

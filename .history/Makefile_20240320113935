@@ -1,0 +1,8 @@
+all: run
+
+run: main.exe:
+	./main.exe
+
+main.exe: ./Code/main.cpp
+	g++ ./Code/main.cpp -o main.exe -g ./Code/Implementations/*.cpp -lncurses
+

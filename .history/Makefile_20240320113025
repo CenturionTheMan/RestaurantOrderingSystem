@@ -1,0 +1,3 @@
+
+compile: ./Code/main.cpp
+	g++ ./Code/main.cpp

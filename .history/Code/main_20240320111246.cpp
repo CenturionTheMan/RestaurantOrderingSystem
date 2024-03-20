@@ -2,7 +2,8 @@
 #include "Headers/RestaurantContainers.h"
 #include "Headers/EntityController.h"
 #include "Headers/Gui.h"
-#include "Headers/GuiNcurses.h"
+// #include "Headers/GuiNcurses.h"
+#include <ncurses.h>
 
 
 int main(int argc, char const *argv[])
@@ -20,6 +21,13 @@ int main(int argc, char const *argv[])
     // Gui::RunGuiOutput(entityController, 68); //around 15 frames per second
     
     // Gui::RunGuiInput(entityController);
-    GuiNcurses gui;
+
+
+    initscr();
+
+    WINDOW* win  = newwin(20, 20, 10, 10);
+
+
+    endwin();
     return 0;
 }

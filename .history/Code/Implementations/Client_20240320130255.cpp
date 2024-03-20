@@ -35,9 +35,9 @@ void Client::Run()
                 return enoughPancakes; 
             });
             if(this->isStopRequested) break;
+            this->state = ClientState::Eating;
             Containers::TakePancakeFromBuffet(pancakeType);
             lock.unlock();
-            this->state = ClientState::Eating;
             std::this_thread::sleep_for(std::chrono::milliseconds(Client::randomGenerator.GetRandomNumber(minOrderTimeMs, maxOrderTimeMs)));
         }
     });
