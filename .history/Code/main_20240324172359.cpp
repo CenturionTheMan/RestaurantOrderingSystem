@@ -16,16 +16,12 @@ int main(int argc, char const *argv[])
     entityController.AddClient(1000, 2000);
     entityController.AddClient(1000, 2000);
     entityController.AddClient(1000, 2000);
-
-    #ifdef _WIN32
+    #ifdef _WIN32 or _WIN64
         Gui::RunGuiOutput(entityController, 68); //around 15 frames per second
         Gui::RunGuiInput(entityController);
-    #elif __linux__
+    #else _LINUX
         GuiNcurses gui(entityController);
         gui.RunGui();
-    #else 
-        Gui::RunGuiOutput(entityController, 68); //around 15 frames per second
-        Gui::RunGuiInput(entityController);
     #endif
     
     return 0;

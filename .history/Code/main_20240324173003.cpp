@@ -20,12 +20,12 @@ int main(int argc, char const *argv[])
     #ifdef _WIN32
         Gui::RunGuiOutput(entityController, 68); //around 15 frames per second
         Gui::RunGuiInput(entityController);
-    #elif __linux__
-        GuiNcurses gui(entityController);
-        gui.RunGui();
-    #else 
+    #elif _WIN64
         Gui::RunGuiOutput(entityController, 68); //around 15 frames per second
         Gui::RunGuiInput(entityController);
+    #else __linux__
+        GuiNcurses gui(entityController);
+        gui.RunGui();
     #endif
     
     return 0;

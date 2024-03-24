@@ -129,13 +129,13 @@ void GuiNcurses::DrawContent()
 
     //DRAW WALKING COOKS TO BUFFET
     stream << "COOKS:" << std::setw(4) << std::right << GuiNcurses::entityController->GetAmountOfCooksInGivenState(CookState::CookGoingToBuffet);
-    mvwvline(contentWindow, 17, 27, (int)'#', 3);
-    mvwvline(contentWindow, 17, 38, (int)'#', 3);
-    mvwprintw(contentWindow, 17, 28, " GOING TO ");
-    mvwprintw(contentWindow, 18, 28, "  BUFFET  ");
-    mvwhline(contentWindow, 16, 27, (int)'#', 12);
-    mvwhline(contentWindow, 19, 27, (int)'#', 12);
-    mvwprintw(contentWindow, 20, 27, "%s", stream.str().c_str());
+    mvwvline(contentWindow, 21, 27, (int)'#', 3);
+    mvwvline(contentWindow, 21, 38, (int)'#', 3);
+    mvwprintw(contentWindow, 21, 28, " GOING TO ");
+    mvwprintw(contentWindow, 22, 28, "  BUFFET  ");
+    mvwhline(contentWindow, 20, 27, (int)'#', 12);
+    mvwhline(contentWindow, 23, 27, (int)'#', 12);
+    mvwprintw(contentWindow, 24, 27, "%s", stream.str().c_str());
     stream.str(std::string());
 
     //DRAW BUFFET
@@ -174,11 +174,11 @@ void GuiNcurses::DrawContent()
 
     //DRAW MANAGER
     std::string tmp = EntityStateToString(entityController->GetManagerState());
-    mvwprintw(contentWindow, 8, 24, "MANAGER STATE:");
-    mvwhline(contentWindow, 7, 24, (int)'#', 18);
-    mvwhline(contentWindow, 10, 24, (int)'#', 18);
-    mvwprintw(contentWindow, 9, 24, "%s", "                 "); //clear previous state
-    mvwprintw(contentWindow, 9, 24, "%s", tmp.data());
+    mvwprintw(contentWindow, 12, 24, "MANAGER STATE:");
+    mvwhline(contentWindow, 11, 24, (int)'#', 18);
+    mvwhline(contentWindow, 14, 24, (int)'#', 18);
+    mvwprintw(contentWindow, 13, 24, "%s", "                 "); //clear previous state
+    mvwprintw(contentWindow, 13, 24, "%s", tmp.data());
 
     wrefresh(contentWindow);
 }
@@ -216,14 +216,14 @@ void GuiNcurses::DrawLeft()
 
     mvwprintw(leftWindow, 9, 2, "BUFFET: ");
 
-    stream << "  Pancakes " << std::setw(10) << std::right << Containers::buffet[PancakeType::BananaPancakes] 
+    stream << "  Pancakes " << std::setw(4) << std::right << Containers::buffet[PancakeType::BananaPancakes] 
             << "/" 
             << Containers::buffetPancakesLimits[PancakeType::BananaPancakes];
     mvwprintw(leftWindow, 10, 2, "-Banana ");
     mvwprintw(leftWindow, 11, 2, "%s", stream.str().c_str());
     stream.str(std::string());
 
-    stream << "  Pancakes " << std::setw(10) << std::right << Containers::buffet[PancakeType::BlueberryPancakes] 
+    stream << "  Pancakes " << std::setw(4) << std::right << Containers::buffet[PancakeType::BlueberryPancakes] 
             << "/" 
             << Containers::buffetPancakesLimits[PancakeType::BlueberryPancakes];
     mvwprintw(leftWindow, 12, 2, "-Blueberry ");
@@ -231,7 +231,7 @@ void GuiNcurses::DrawLeft()
     stream.str(std::string());
 
 
-    stream << "  Pancakes " << std::setw(10) << std::right << Containers::buffet[PancakeType::ChocolatePancakes] 
+    stream << "  Pancakes " << std::setw(4) << std::right << Containers::buffet[PancakeType::ChocolatePancakes] 
             << "/" 
             << Containers::buffetPancakesLimits[PancakeType::ChocolatePancakes];
     mvwprintw(leftWindow, 14, 2, "-Chocolate ");
@@ -239,13 +239,8 @@ void GuiNcurses::DrawLeft()
     stream.str(std::string());
 
 
-    stream << "COOKS AMOUNT:   " << std::setw(5) << std::right << GuiNcurses::entityController->GetAmountOfCooks();
-    mvwprintw(leftWindow, 18, 2, "%s", stream.str().data());
-    stream.str(std::string());
-
-    stream << "CLIENTS AMOUNT: " << std::setw(5) << std::right << GuiNcurses::entityController->GetAmountOfClients();
-    mvwprintw(leftWindow, 19, 2, "%s", stream.str().data());
-    stream.str(std::string());
+    stream << "COOKS AMOUNT: " << std::setw(4) << std::right << GuiNcurses::entityController->GetAmountOfCooks();
+    mvwprintw(leftWindow, 17, 2, "%s", stream.str().data());
 
     wrefresh(leftWindow);
 }

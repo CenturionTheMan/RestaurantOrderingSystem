@@ -174,11 +174,11 @@ void GuiNcurses::DrawContent()
 
     //DRAW MANAGER
     std::string tmp = EntityStateToString(entityController->GetManagerState());
-    mvwprintw(contentWindow, 8, 24, "MANAGER STATE:");
-    mvwhline(contentWindow, 7, 24, (int)'#', 18);
-    mvwhline(contentWindow, 10, 24, (int)'#', 18);
-    mvwprintw(contentWindow, 9, 24, "%s", "                 "); //clear previous state
-    mvwprintw(contentWindow, 9, 24, "%s", tmp.data());
+    mvwprintw(contentWindow, 9, 24, "MANAGER STATE:");
+    mvwhline(contentWindow, 8, 24, (int)'#', 18);
+    mvwhline(contentWindow, 11, 24, (int)'#', 18);
+    mvwprintw(contentWindow, 10, 24, "%s", "                 "); //clear previous state
+    mvwprintw(contentWindow, 10, 24, "%s", tmp.data());
 
     wrefresh(contentWindow);
 }

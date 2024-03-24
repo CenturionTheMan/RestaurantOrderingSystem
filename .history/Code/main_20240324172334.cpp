@@ -16,17 +16,14 @@ int main(int argc, char const *argv[])
     entityController.AddClient(1000, 2000);
     entityController.AddClient(1000, 2000);
     entityController.AddClient(1000, 2000);
-
-    #ifdef _WIN32
-        Gui::RunGuiOutput(entityController, 68); //around 15 frames per second
-        Gui::RunGuiInput(entityController);
-    #elif __linux__
-        GuiNcurses gui(entityController);
-        gui.RunGui();
-    #else 
-        Gui::RunGuiOutput(entityController, 68); //around 15 frames per second
-        Gui::RunGuiInput(entityController);
+    #ifdef _WIN32 or _WIN64
+    #else _UNIX
+    std::system("clear"); //! linux
     #endif
+    // Gui::RunGuiOutput(entityController, 68); //around 15 frames per second
+    // Gui::RunGuiInput(entityController);
     
+    GuiNcurses gui(entityController);
+    gui.RunGui();
     return 0;
 }
