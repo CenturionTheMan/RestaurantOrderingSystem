@@ -6,7 +6,6 @@
 #include <string>
 #include <iomanip>
 #include <sstream>
-#include <algorithm>
 
 class GuiNcurses
 {

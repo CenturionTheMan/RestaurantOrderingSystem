@@ -4,9 +4,7 @@
 #include "EntityController.h"
 #include "RestaurantContainers.h"
 #include <string>
-#include <iomanip>
 #include <sstream>
-#include <algorithm>
 
 class GuiNcurses
 {
@@ -39,7 +37,7 @@ private:
     WINDOW* leftWindow = NULL;;
     WINDOW* rightWindow = NULL;;
 
-    EntityController* entityController = NULL;
+    EntityController* entityController = NULL;;
 
     std::stringstream userInputStream;
 

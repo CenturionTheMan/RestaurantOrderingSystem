@@ -4,9 +4,7 @@
 #include "EntityController.h"
 #include "RestaurantContainers.h"
 #include <string>
-#include <iomanip>
 #include <sstream>
-#include <algorithm>
 
 class GuiNcurses
 {
@@ -34,12 +32,12 @@ private:
     const std::string COMMAND_SET_INGREDIENTS_TO_ADD_AMOUNT = "setingredientstoaddamount";
     const std::string COMMAND_EXIT = "exit";
     
-    WINDOW* contentWindow = NULL;
-    WINDOW* bottomWindow = NULL;;
-    WINDOW* leftWindow = NULL;;
-    WINDOW* rightWindow = NULL;;
+    WINDOW* contentWindow;
+    WINDOW* bottomWindow;
+    WINDOW* leftWindow;
+    WINDOW* rightWindow;
 
-    EntityController* entityController = NULL;
+    EntityController* entityController;
 
     std::stringstream userInputStream;
 
