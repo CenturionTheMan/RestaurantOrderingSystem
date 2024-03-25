@@ -69,8 +69,10 @@ void Cook::Run()
                 if(this->isStopRequested) return true;
                 return Containers::buffet[Cook::specializedInPancakeType] < Containers::GetBuffetPancakesLimit(Cook::specializedInPancakeType);
             });
-            if(this->isStopRequested) break;
-            
+            if(this->isStopRequested)
+            {
+                break;
+            }
             Containers::buffet[Cook::specializedInPancakeType]++;
             buffetLock.unlock();
         }

@@ -51,7 +51,6 @@ void Cook::Run()
                 return Containers::CheckIfEnoughIngredients(Cook::specializedInPancakeType);
             });
             if(this->isStopRequested) break;
-
             Containers::TakeIngredientsFromFridge(Cook::specializedInPancakeType);
             fridgeLock.unlock();
 
@@ -63,14 +62,18 @@ void Cook::Run()
             this->state = CookState::CookGoingToBuffet;
             std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
-            this->state = CookState::CookWaitingForBuffet;
             std::unique_lock<std::mutex> buffetLock(Containers::buffetMutex);
             Cook::conditionVariable->wait(buffetLock, [this] { 
+                bool enoughSpaceInBuffet = Containers::buffet[Cook::specializedInPancakeType] < Containers::GetBuffetPancakesLimit(Cook::specializedInPancakeType);
                 if(this->isStopRequested) return true;
-                return Containers::buffet[Cook::specializedInPancakeType] < Containers::GetBuffetPancakesLimit(Cook::specializedInPancakeType);
+                
+                if(!enoughSpaceInBuffet) this->state = CookState::CookWaitingForBuffet;
+                return enoughSpaceInBuffet;
             });
-            if(this->isStopRequested) break;
-            
+            if(this->isStopRequested)
+            {
+                break;
+            }
             Containers::buffet[Cook::specializedInPancakeType]++;
             buffetLock.unlock();
         }
