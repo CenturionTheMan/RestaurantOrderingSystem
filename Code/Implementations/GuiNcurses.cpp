@@ -49,7 +49,6 @@ GuiNcurses::~GuiNcurses()
 #pragma endregion CTOR/DTOR
 
 
-
 #pragma region PRIVATE_METHODS
 
 std::stringstream userInputStream;
@@ -400,7 +399,7 @@ void GuiNcurses::RunGui()
             }
             else
             {
-               //?? unknown command
+               //?? unknown command 
             }
         }
     });

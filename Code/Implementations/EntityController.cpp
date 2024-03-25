@@ -10,10 +10,12 @@ EntityController::~EntityController()
     delete manager;
     for (auto cook : cooks)
     {
+        cook->Stop();
         delete cook;
     }
     for (auto client : clients)
     {
+        client->Stop();
         delete client;
     }
 }
