@@ -277,7 +277,7 @@ void GuiNcurses::RunGui()
         {
             this->DrawContent();
             this->DrawLeft();
-            // this->DrawRight(); //commands are static, no need to refresh them
+            // this->DrawRight();
             this->DrawBottom();
 
             std::this_thread::sleep_for(std::chrono::milliseconds(34));
@@ -400,7 +400,7 @@ void GuiNcurses::RunGui()
             }
             else
             {
-               //?? unknown command
+               //??
             }
         }
     });

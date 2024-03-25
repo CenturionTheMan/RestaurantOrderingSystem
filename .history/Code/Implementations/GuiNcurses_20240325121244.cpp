@@ -24,18 +24,16 @@ GuiNcurses::GuiNcurses(EntityController& entityController)
     box(leftWindow, 0, 0);
     box(rightWindow, 0, 0);
 
-    // draw titles
     mvwprintw(contentWindow, 1, 2, "|RESTAURANT|");
     mvwprintw(leftWindow, 1, 2, "|CONTAINERS|");
+    // mvwprintw(bottomWindow, 1, 2, "USER INPUT > ");
     mvwprintw(rightWindow, 1, 2, "|COMMANDS|");
 
-    // refresh windows
     wrefresh(contentWindow);
     wrefresh(bottomWindow);
     wrefresh(leftWindow);
     wrefresh(rightWindow);
 
-    // draw each window
     DrawContent();
     DrawLeft();
     DrawRight();
@@ -57,24 +55,17 @@ std::stringstream userInputStream;
 
 void GuiNcurses::DrawBottom()
 {
-    // holder for user input
     std::string tmp = "USER INPUT > " + userInputStream.str();
-    
-    // clear previous input
     for (int i = 2; i < WINDOW_WIDTH * 75/100 - 1; i++)
     {
         mvwprintw(bottomWindow, 1, i, " ");
     }
-
-    // draw new input
     mvwprintw(bottomWindow, 1, 2, "%s", tmp.data());
     wrefresh(bottomWindow);
 }
 
 void GuiNcurses::DrawRight()
 {
-    // Print commands into right window
-
     mvwprintw(rightWindow, 4, 2, "%s", (COMMAND_ADD_CLIENT + "^X").data());
     mvwprintw(rightWindow, 5, 2, "%s", (COMMAND_DELETE_CLIENT + "^X").data());
 
@@ -176,7 +167,7 @@ void GuiNcurses::DrawContent()
     stream << "CLIENTS:" << std::setw(4) << std::right << GuiNcurses::entityController->GetAmountOfClientsInGivenState(ClientState::Eating);
     mvwvline(contentWindow, 3, 5, (int)'#', 3);
     mvwvline(contentWindow, 3, 16, (int)'#', 3);
-    mvwprintw(contentWindow, 4, 6, " CANTEEN ");
+    mvwprintw(contentWindow, 4, 6, bottom" CANTEEN ");
     mvwhline(contentWindow, 3, 5, (int)'#', 11);
     mvwhline(contentWindow, 5, 5, (int)'#', 11);
     mvwprintw(contentWindow, 6, 5, "%s", stream.str().c_str());
@@ -248,16 +239,13 @@ void GuiNcurses::DrawLeft()
     mvwprintw(leftWindow, 15, 2, "%s", stream.str().c_str());
     stream.str(std::string());
 
-    stream << "INGREDIENTS TO ADD:" << std::setw(5) << std::right << GuiNcurses::entityController->GetManager()->GetIngredientsAddAmount();
-    mvwprintw(leftWindow, 17, 2, "%s", stream.str().data());
-    stream.str(std::string());
 
     stream << "COOKS AMOUNT:   " << std::setw(5) << std::right << GuiNcurses::entityController->GetAmountOfCooks();
-    mvwprintw(leftWindow, 19, 2, "%s", stream.str().data());
+    mvwprintw(leftWindow, 18, 2, "%s", stream.str().data());
     stream.str(std::string());
 
     stream << "CLIENTS AMOUNT: " << std::setw(5) << std::right << GuiNcurses::entityController->GetAmountOfClients();
-    mvwprintw(leftWindow, 20, 2, "%s", stream.str().data());
+    mvwprintw(leftWindow, 19, 2, "%s", stream.str().data());
     stream.str(std::string());
 
     wrefresh(leftWindow);
@@ -277,7 +265,7 @@ void GuiNcurses::RunGui()
         {
             this->DrawContent();
             this->DrawLeft();
-            // this->DrawRight(); //commands are static, no need to refresh them
+            // this->DrawRight();
             this->DrawBottom();
 
             std::this_thread::sleep_for(std::chrono::milliseconds(34));
@@ -400,7 +388,7 @@ void GuiNcurses::RunGui()
             }
             else
             {
-               //?? unknown command
+               //??
             }
         }
     });

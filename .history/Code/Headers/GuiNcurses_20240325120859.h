@@ -30,46 +30,31 @@ private:
     const std::string COMMAND_SET_FRIDGE_LIMIT_BANANA = "setfridgelimitbanana";
     const std::string COMMAND_SET_FRIDGE_LIMIT_CHOCOLATE = "setfridgelimitchocolate";
     const std::string COMMAND_SET_FRIDGE_LIMIT_BLUEBERRY = "setfridgelimitblueberry";
-    const std::string COMMAND_SET_FRIDGE_LIMIT_COMMONS = "setfridgelimitcommons";
+    const std::string COMMAND_SET_FRIDGE_LIMIT_COMMONS = "setbuffetlimitcommons";
     const std::string COMMAND_SET_BUFFET_LIMIT_BANANA = "setbuffetlimitbanana";
     const std::string COMMAND_SET_BUFFET_LIMIT_CHOCOLATE = "setbuffetlimitchocolate";
     const std::string COMMAND_SET_BUFFET_LIMIT_BLUEBERRY = "setbuffetlimitblueberry";
     const std::string COMMAND_SET_INGREDIENTS_TO_ADD_AMOUNT = "setingredientstoaddamount";
     const std::string COMMAND_EXIT = "exit";
     
-    // windows holders 
     WINDOW* contentWindow = NULL;
     WINDOW* bottomWindow = NULL;;
     WINDOW* leftWindow = NULL;;
     WINDOW* rightWindow = NULL;;
 
-    // entity controller
     EntityController* entityController = NULL;
 
-    // user input holder
     std::stringstream userInputStream;
 
-    /// @brief Function which draws the content window
     void DrawContent();
-
-    /// @brief Function which draws the left (commands) window
     void DrawLeft();
-
-    /// @brief Function which draws the right (containers) window
     void DrawRight();
-
-    /// @brief Function which draws the bottom (input) window
     void DrawBottom();
 
 public:
-    /// @brief CTOR
-    /// @param entityController entity controller object 
     GuiNcurses(EntityController& entityController);
-
-    /// @brief DTOR
     ~GuiNcurses();
 
-    /// @brief Function that runs the GUI
     void RunGui();
 };
 

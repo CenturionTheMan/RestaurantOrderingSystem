@@ -57,24 +57,17 @@ std::stringstream userInputStream;
 
 void GuiNcurses::DrawBottom()
 {
-    // holder for user input
     std::string tmp = "USER INPUT > " + userInputStream.str();
-    
-    // clear previous input
     for (int i = 2; i < WINDOW_WIDTH * 75/100 - 1; i++)
     {
         mvwprintw(bottomWindow, 1, i, " ");
     }
-
-    // draw new input
     mvwprintw(bottomWindow, 1, 2, "%s", tmp.data());
     wrefresh(bottomWindow);
 }
 
 void GuiNcurses::DrawRight()
 {
-    // Print commands into right window
-
     mvwprintw(rightWindow, 4, 2, "%s", (COMMAND_ADD_CLIENT + "^X").data());
     mvwprintw(rightWindow, 5, 2, "%s", (COMMAND_DELETE_CLIENT + "^X").data());
 
@@ -248,7 +241,7 @@ void GuiNcurses::DrawLeft()
     mvwprintw(leftWindow, 15, 2, "%s", stream.str().c_str());
     stream.str(std::string());
 
-    stream << "INGREDIENTS TO ADD:" << std::setw(5) << std::right << GuiNcurses::entityController->GetManager()->GetIngredientsAddAmount();
+    stream << "INGREDIENTS TO ADD: " << std::setw(4) << std::right << GuiNcurses::entityController->GetManager()->GetIngredientsAddAmount();
     mvwprintw(leftWindow, 17, 2, "%s", stream.str().data());
     stream.str(std::string());
 
@@ -277,7 +270,7 @@ void GuiNcurses::RunGui()
         {
             this->DrawContent();
             this->DrawLeft();
-            // this->DrawRight(); //commands are static, no need to refresh them
+            // this->DrawRight();
             this->DrawBottom();
 
             std::this_thread::sleep_for(std::chrono::milliseconds(34));
@@ -400,7 +393,7 @@ void GuiNcurses::RunGui()
             }
             else
             {
-               //?? unknown command
+               //??
             }
         }
     });

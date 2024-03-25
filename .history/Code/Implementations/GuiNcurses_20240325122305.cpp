@@ -400,7 +400,7 @@ void GuiNcurses::RunGui()
             }
             else
             {
-               //?? unknown command
+               //??
             }
         }
     });

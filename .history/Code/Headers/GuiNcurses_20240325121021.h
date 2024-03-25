@@ -30,7 +30,7 @@ private:
     const std::string COMMAND_SET_FRIDGE_LIMIT_BANANA = "setfridgelimitbanana";
     const std::string COMMAND_SET_FRIDGE_LIMIT_CHOCOLATE = "setfridgelimitchocolate";
     const std::string COMMAND_SET_FRIDGE_LIMIT_BLUEBERRY = "setfridgelimitblueberry";
-    const std::string COMMAND_SET_FRIDGE_LIMIT_COMMONS = "setfridgelimitcommons";
+    const std::string COMMAND_SET_FRIDGE_LIMIT_COMMONS = "setbuffetlimitcommons";
     const std::string COMMAND_SET_BUFFET_LIMIT_BANANA = "setbuffetlimitbanana";
     const std::string COMMAND_SET_BUFFET_LIMIT_CHOCOLATE = "setbuffetlimitchocolate";
     const std::string COMMAND_SET_BUFFET_LIMIT_BLUEBERRY = "setbuffetlimitblueberry";
@@ -62,14 +62,9 @@ private:
     void DrawBottom();
 
 public:
-    /// @brief CTOR
-    /// @param entityController entity controller object 
     GuiNcurses(EntityController& entityController);
-
-    /// @brief DTOR
     ~GuiNcurses();
 
-    /// @brief Function that runs the GUI
     void RunGui();
 };
 
